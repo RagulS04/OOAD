@@ -35,10 +35,10 @@ public class Register extends javax.swing.JFrame {
                 throw new NullPointerException();
             
             if(password.equals(cpassword)==false)
-                JOptionPane.showMessageDialog(null,"Password crctaa enter pandra bnda");
+                JOptionPane.showMessageDialog(null,"Password doesn't match");
             
             else if(email.matches("[a-zA-Z][a-zA-Z0-9_]*@gmail.com")==false)
-                JOptionPane.showMessageDialog(null,"Email Crctaa enter pandra Ctrl+E");
+                JOptionPane.showMessageDialog(null,"Email incorrect");
             
             else
             {

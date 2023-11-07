@@ -8,15 +8,33 @@ package Model;
  *
  * @author Ragul S
  */
-import canteenmanagementsystem.CustomerInfo;
+//import canteenmanagementsystem.CustomerInfo;
+import canteenmanagementsystem.ItemInfo;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 public class Orderpage extends javax.swing.JFrame {
 
     /**
      * Creates new form Orderpage
      */
     public Orderpage() {
-        jTextField1.setText(String.valueOf(CustomerInfo.cus_array.get(0).getBal_amount()));
+       // Searchbox.setText(String.valueOf(CustomerInfo.cus_array.get(0).getBal_amount()));
         initComponents();
+        
+        DefaultTableModel dtm = (DefaultTableModel) Menutable.getModel();
+        dtm.setRowCount(0);
+        
+        for(ItemInfo it: ItemInfo.item_array){
+            dtm.addRow(new Object[]{
+                it.getName(),it.getPrice()
+            });
+        }
+        dtm.addRow(new Object[]{
+            "pongal",12
+        });
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -29,17 +47,17 @@ public class Orderpage extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Menutable = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        Carttable = new javax.swing.JTable();
+        Searchbox = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Menutable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -53,26 +71,35 @@ public class Orderpage extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.Double.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
+        Menutable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MenutableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(Menutable);
+        if (Menutable.getColumnModel().getColumnCount() > 0) {
+            Menutable.getColumnModel().getColumn(1).setResizable(false);
         }
 
         jButton1.setBackground(new java.awt.Color(153, 153, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         jButton1.setText("Proceed to pay");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        Carttable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Name", "Quantity", "Price"
@@ -81,18 +108,30 @@ public class Orderpage extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.Integer.class, java.lang.Double.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
-        jScrollPane3.setViewportView(jTable2);
+        jScrollPane3.setViewportView(Carttable);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Enter item name");
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setText("Search");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,7 +145,7 @@ public class Orderpage extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Searchbox, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(68, 68, 68))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(279, 279, 279)
@@ -128,7 +167,7 @@ public class Orderpage extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Searchbox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2)
@@ -137,13 +176,80 @@ public class Orderpage extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1)))
                 .addGap(15, 15, 15))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    public int Search(String itemname){
+        TableModel model = Carttable.getModel();
+        int rowcount = model.getRowCount();
+        return rowcount-1;
+        //if(rowcount==0) return -1;
+        
+        /*for(int i=0;i<rowcount;i++){
+            if(itemname.equals(model.getValueAt(i, 0))){
+                return i;
+            }
+        }
+        
+        return -1;*/
+    }
+    private void MenutableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenutableMouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel dtm = (DefaultTableModel) Carttable.getModel();
+        
+        int index = Menutable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) Menutable.getModel(); 
+        
+        String itemname = model.getValueAt(index, 0).toString();
+        String price = model.getValueAt(index,1).toString();
+        int foundIndex = Search(itemname);
+        //int foundIndex=-1;
+        
+        if( foundIndex != -1){
+            double pri = Double.parseDouble(dtm.getValueAt(foundIndex, 2).toString());
+            int qt =Integer.parseInt(dtm.getValueAt(foundIndex, 1).toString());
+            pri += pri/qt;
+            qt++;
+            
+            dtm.setValueAt(pri, foundIndex, 2);
+            dtm.setValueAt(qt,foundIndex,1);
+            
+        }
+        else
+        {
+            dtm.addRow(new Object[]{
+                itemname,1,Double.valueOf(price)
+            });
+        }
+    }//GEN-LAST:event_MenutableMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        String name = Searchbox.getText();
+        int flag = 0;
+        //JOptionPane.showMessageDialog(null,name+" Not Found !"+ItemInfo.item_array.size());
+        DefaultTableModel dtm = (DefaultTableModel) Menutable.getModel();
+        dtm.setRowCount(0);
+        
+        for(ItemInfo it: ItemInfo.item_array){
+            if(it.getName().equals(name)){
+                dtm.addRow(new Object[]{
+                it.getName(),it.getPrice(),it.getAvailable_quantity()
+            });
+                flag = 1;
+            }
+        }
+        
+        if(flag == 0){
+            JOptionPane.showMessageDialog(null,name+" Not Found !");
+            Searchbox.setText("");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -181,13 +287,13 @@ public class Orderpage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable Carttable;
+    private javax.swing.JTable Menutable;
+    private javax.swing.JTextField Searchbox;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

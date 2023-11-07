@@ -2,21 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Ragul%20S/OneDrive/Documents/NetBeansProjects/CanteenManagementSystem/src/Model/AdminRegister.java</file>
-            <file>file:/C:/Users/Ragul%20S/OneDrive/Documents/NetBeansProjects/CanteenManagementSystem/src/Model/AdminLogin.java</file>
-            <file>file:/C:/Users/Ragul%20S/OneDrive/Documents/NetBeansProjects/CanteenManagementSystem/src/Model/SearchItems.java</file>
-            <file>file:/C:/Users/Ragul%20S/OneDrive/Documents/NetBeansProjects/CanteenManagementSystem/src/Model/Register.java</file>
-            <file>file:/C:/Users/Ragul%20S/OneDrive/Documents/NetBeansProjects/CanteenManagementSystem/src/Model/AddItem.java</file>
-            <file>file:/C:/Users/Ragul%20S/OneDrive/Documents/NetBeansProjects/CanteenManagementSystem/src/Model/UpdateDetails.java</file>
-            <file>file:/C:/Users/Ragul%20S/OneDrive/Documents/NetBeansProjects/CanteenManagementSystem/src/Model/Login.java</file>
-            <file>file:/C:/Users/Ragul%20S/OneDrive/Documents/NetBeansProjects/CanteenManagementSystem/src/Model/ViewItems.java</file>
-            <file>file:/C:/Users/Ragul%20S/OneDrive/Documents/NetBeansProjects/CanteenManagementSystem/src/canteenmanagementsystem/CustomerInfo.java</file>
-            <file>file:/C:/Users/Ragul%20S/OneDrive/Documents/NetBeansProjects/CanteenManagementSystem/src/canteenmanagementsystem/ItemInfo.java</file>
-            <file>file:/C:/Users/Ragul%20S/OneDrive/Documents/NetBeansProjects/CanteenManagementSystem/src/Model/Orderpage.java</file>
-            <file>file:/C:/Users/Ragul%20S/OneDrive/Documents/NetBeansProjects/CanteenManagementSystem/src/Model/rechargeUser.java</file>
-            <file>file:/C:/Users/Ragul%20S/OneDrive/Documents/NetBeansProjects/CanteenManagementSystem/src/canteenmanagementsystem/OrderInfo.java</file>
-            <file>file:/C:/Users/Ragul%20S/OneDrive/Documents/NetBeansProjects/CanteenManagementSystem/src/Model/ManageItems.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
