@@ -4,6 +4,8 @@
  */
 package Model;
 
+import static Model.Orderpage.*;
+import static Model.Login.op;
 import javax.swing.*;
 import canteenmanagementsystem.ItemInfo;
 /**
@@ -16,7 +18,9 @@ public class AddItem extends javax.swing.JFrame {
      * Creates new form AddItem
      */
     public AddItem() {
+        
         initComponents();
+        setBounds(860,200,600,450);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
@@ -151,9 +155,16 @@ public class AddItem extends javax.swing.JFrame {
         ItemInfo in = new ItemInfo(name,price,quantity);
         ItemInfo.item_array.add(in);
         
-        JOptionPane.showMessageDialog(null,"Item added");
+        final JOptionPane pane = new JOptionPane("Item added" );
+                final JDialog d = pane.createDialog((JFrame)null, "Add");
+                d.setLocation(1050,350);
+                d.setVisible(true);
+        //JOptionPane.showMessageDialog(null,"Item added");
         //clearfield();
         setVisible(false);
+        op.setVisible(false);
+        Login.op = new Orderpage(un);
+        op.setVisible(true);
         
     }//GEN-LAST:event_AddbtnActionPerformed
 

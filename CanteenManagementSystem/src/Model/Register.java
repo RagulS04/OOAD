@@ -7,6 +7,7 @@ package Model;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import canteenmanagementsystem.CustomerInfo;
+import javax.swing.JDialog;
 
 /**
  *
@@ -18,6 +19,7 @@ public class Register extends javax.swing.JFrame {
      * Creates new form Register
      */
     public Register() {
+        setBounds(0,100,0,0);
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
@@ -35,23 +37,42 @@ public class Register extends javax.swing.JFrame {
                 throw new NullPointerException();
             
             if(password.equals(cpassword)==false)
-                JOptionPane.showMessageDialog(null,"Password doesn't match");
+            {
+                //JOptionPane.showMessageDialog(null,"Password doesn't match");
+                final JOptionPane pane = new JOptionPane("Password doesn't match");
+                final JDialog d = pane.createDialog((JFrame)null, "Registration Error");
+                d.setLocation(250,350);
+                d.setVisible(true);
+            }
             
             else if(email.matches("[a-zA-Z][a-zA-Z0-9_]*@gmail.com")==false)
-                JOptionPane.showMessageDialog(null,"Email incorrect");
-            
+            {
+             //   JOptionPane.showMessageDialog(null,"Email incorrect");
+                final JOptionPane pane = new JOptionPane("Email incorrect");
+                final JDialog d = pane.createDialog((JFrame)null, "Registration Error");
+                d.setLocation(250,350);
+                d.setVisible(true);
+            }
             else
             {
-                ci = new CustomerInfo(username,password,email,0);
+                ci = new CustomerInfo(username,password,email,100);
                 CustomerInfo.cus_array.add(ci);
-                JOptionPane.showMessageDialog(null,"Registered Successfully");
+                //JOptionPane.showMessageDialog(null,"Registered Successfully");
+                final JOptionPane pane = new JOptionPane(username+" registered successfully");
+                final JDialog d = pane.createDialog((JFrame)null, "Registration");
+                d.setLocation(250,350);
+                d.setVisible(true);
                 setVisible(false);
                 new Login().setVisible(true);
             }
         }
         catch(NullPointerException e)
         {
-            JOptionPane.showMessageDialog(null,"Please Enter all fields");
+            //JOptionPane.showMessageDialog(null,"Please Enter all fields");
+            final JOptionPane pane = new JOptionPane("Please enter all fields");
+                final JDialog d = pane.createDialog((JFrame)null, "Registration Error");
+                d.setLocation(250,350);
+                d.setVisible(true);
         }
     }
     
@@ -66,7 +87,6 @@ public class Register extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        Cus_password = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         Cus_username = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -74,33 +94,28 @@ public class Register extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         Cus_register = new javax.swing.JButton();
-        Cus_conpassword = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         Cus_email = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        Cus_password = new javax.swing.JPasswordField();
+        Cus_conpassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(760, 632));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(102, 255, 102));
-        jLabel1.setText("Register");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 130, 30));
+        jLabel1.setForeground(new java.awt.Color(0, 0, 204));
+        jLabel1.setText("Customer");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 130, 30));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Username");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, -1, -1));
-
-        Cus_password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Cus_password.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Cus_passwordActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Cus_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, 243, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Password");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, -1, -1));
 
         Cus_username.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Cus_username.addActionListener(new java.awt.event.ActionListener() {
@@ -108,7 +123,7 @@ public class Register extends javax.swing.JFrame {
                 Cus_usernameActionPerformed(evt);
             }
         });
-        getContentPane().add(Cus_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 243, -1));
+        getContentPane().add(Cus_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 240, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Already have an account?");
@@ -130,7 +145,7 @@ public class Register extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Confirm Password");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 126, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 126, -1));
 
         Cus_register.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Cus_register.setText("Register");
@@ -139,27 +154,22 @@ public class Register extends javax.swing.JFrame {
                 Cus_registerActionPerformed(evt);
             }
         });
-        getContentPane().add(Cus_register, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 320, -1, -1));
-
-        Cus_conpassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Cus_conpassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Cus_conpasswordActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Cus_conpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 243, -1));
+        getContentPane().add(Cus_register, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 360, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("Email ID");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 80, 30));
-        getContentPane().add(Cus_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 243, 27));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 80, 30));
+        getContentPane().add(Cus_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 310, 243, 27));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(102, 255, 102));
+        jLabel8.setText("Register");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 130, 30));
+        getContentPane().add(Cus_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 240, 30));
+        getContentPane().add(Cus_conpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, 240, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void Cus_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cus_passwordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Cus_passwordActionPerformed
 
     private void Cus_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cus_loginActionPerformed
 
@@ -171,10 +181,6 @@ public class Register extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_Cus_usernameActionPerformed
-
-    private void Cus_conpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cus_conpasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Cus_conpasswordActionPerformed
 
     private void Cus_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cus_registerActionPerformed
         Validate();
@@ -216,10 +222,10 @@ public class Register extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Cus_conpassword;
+    private javax.swing.JPasswordField Cus_conpassword;
     private javax.swing.JTextField Cus_email;
     private javax.swing.JButton Cus_login;
-    private javax.swing.JTextField Cus_password;
+    private javax.swing.JPasswordField Cus_password;
     private javax.swing.JButton Cus_register;
     private javax.swing.JTextField Cus_username;
     private javax.swing.JLabel jLabel1;
@@ -229,5 +235,6 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
 }

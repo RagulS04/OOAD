@@ -20,6 +20,8 @@ public class ViewItems extends javax.swing.JFrame {
      */
     public ViewItems() {
         initComponents();
+        setBounds(860,200,600,450);
+        //setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         DefaultTableModel dtm = (DefaultTableModel) Menutable.getModel();
         dtm.setRowCount(0);
         
@@ -57,17 +59,17 @@ public class ViewItems extends javax.swing.JFrame {
 
         Menutable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Item", "Price"
+                "Item", "Price", "Quantity"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -83,6 +85,7 @@ public class ViewItems extends javax.swing.JFrame {
         if (Menutable.getColumnModel().getColumnCount() > 0) {
             Menutable.getColumnModel().getColumn(0).setResizable(false);
             Menutable.getColumnModel().getColumn(1).setResizable(false);
+            Menutable.getColumnModel().getColumn(2).setResizable(false);
         }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -110,8 +113,8 @@ public class ViewItems extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         pack();

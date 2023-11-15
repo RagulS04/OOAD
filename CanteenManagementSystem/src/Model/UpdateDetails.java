@@ -4,8 +4,13 @@
  */
 package Model;
 
+import static Model.Login.op;
+import static Model.Orderpage.un;
+import canteenmanagementsystem.CustomerInfo;
 import canteenmanagementsystem.ItemInfo;
+import canteenmanagementsystem.Order;
 import java.util.ArrayList;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -17,6 +22,7 @@ public class UpdateDetails extends javax.swing.JFrame {
     
     public UpdateDetails(){
         initComponents();
+        
     }
 
     /**
@@ -29,14 +35,23 @@ public class UpdateDetails extends javax.swing.JFrame {
      */
     
     ItemInfo it;
+    Order it2;
     public UpdateDetails(ArrayList<ItemInfo> item_array,String name,String price,String quantity) {
         initComponents();
+        setBounds(860,200,600,450);
+        //setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         
         for(ItemInfo it1: item_array){
             if(it1.getName().equals(name)){
                 it = it1;
+            }
+        }
+        
+        for(Order it1: CustomerInfo.order){
+            if(it1.getName().equals(name)){
+                it2 = it1;
             }
         }
         updateitemname.setText(name);
@@ -172,8 +187,17 @@ public class UpdateDetails extends javax.swing.JFrame {
         it.setName(name);
         it.setPrice(price);
         
-        JOptionPane.showMessageDialog(null,"Item Updated Successfully");
+        it2.setName(name);
+        it2.setP(price*it2.getQ());
+        final JOptionPane pane = new JOptionPane("Item Updated Successfully");
+            final JDialog d = pane.createDialog((JFrame)null, "Update");
+            d.setLocation(1050,350);
+            d.setVisible(true);
+        //JOptionPane.showMessageDialog(null,"Item Updated Successfully");
         setVisible(false);
+        op.setVisible(false);
+        Login.op = new Orderpage(un);
+        op.setVisible(true);
     }//GEN-LAST:event_updatebtnActionPerformed
 
     private void clearbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearbtnActionPerformed

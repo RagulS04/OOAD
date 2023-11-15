@@ -5,6 +5,8 @@
 package Model;
 
 import canteenmanagementsystem.AdminInfo;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,7 +19,9 @@ public class AdminRegister extends javax.swing.JFrame {
      * Creates new form AdminRegister
      */
     public AdminRegister() {
+        setBounds(790,100,400,5);
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -40,23 +44,44 @@ public class AdminRegister extends javax.swing.JFrame {
                 throw new NullPointerException();
             
             if(password.equals(cpassword)==false)
-                JOptionPane.showMessageDialog(null,"Password doesn't match");
+            {
+                //JOptionPane.showMessageDialog(null,"Password doesn't match");
+                final JOptionPane pane = new JOptionPane("Password doesn't match");
+                final JDialog d = pane.createDialog((JFrame)null, "Registration Error");
+                d.setLocation(1050,350);
+                d.setVisible(true);
+            }
             
             else if(email.matches("[a-zA-Z][a-zA-Z0-9_]*@gmail.com")==false)
-                JOptionPane.showMessageDialog(null,"Email incorrect");
+            {
+                //JOptionPane.showMessageDialog(null,"Email incorrect");
+                final JOptionPane pane = new JOptionPane("Email Incorrect");
+                final JDialog d = pane.createDialog((JFrame)null, "Registration Error");
+                d.setLocation(1050,350);
+                d.setVisible(true);
+            }
             
             else
             {
                 ai = new AdminInfo(username,password);
                 AdminInfo.Admin_array.add(ai);
-                JOptionPane.showMessageDialog(null,"Registered Successfully");
+                final JOptionPane pane = new JOptionPane(username +" registered successfully");
+                final JDialog d = pane.createDialog((JFrame)null, "Registration");
+                d.setLocation(1050,350);
+                d.setVisible(true);
+                //JOptionPane.showMessageDialog(null,"Registered Successfully");
                 setVisible(false);
                 new AdminLogin().setVisible(true);
             }
         }
         catch(NullPointerException e)
         {
-            JOptionPane.showMessageDialog(null,"Please Enter all fields");
+            //JOptionPane.showMessageDialog(null,"Please Enter all fields");
+            final JOptionPane pane = new JOptionPane("Please Enter all fields");
+            final JDialog d = pane.createDialog((JFrame)null, "Registration Error");
+            d.setLocation(1050,350);
+            d.setVisible(true);
+            
         }
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -64,7 +89,6 @@ public class AdminRegister extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        Admin_password = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         Admin_username = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -72,11 +96,14 @@ public class AdminRegister extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         Admin_register = new javax.swing.JButton();
-        Admin_conpassword = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         Admin_email = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        Admin_password = new javax.swing.JPasswordField();
+        Admin_conpassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(760, 632));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 255, 102));
@@ -84,13 +111,6 @@ public class AdminRegister extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Admin name");
-
-        Admin_password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Admin_password.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Admin_passwordActionPerformed(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Password");
@@ -128,94 +148,100 @@ public class AdminRegister extends javax.swing.JFrame {
             }
         });
 
-        Admin_conpassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Admin_conpassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Admin_conpasswordActionPerformed(evt);
-            }
-        });
-
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("Email ID");
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 51, 204));
+        jLabel8.setText("Staff");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(324, Short.MAX_VALUE)
-                .addComponent(Admin_username, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(199, 199, 199))
+                .addContainerGap(181, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addGap(58, 58, 58)
+                            .addComponent(Admin_username, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Admin_password, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(Admin_conpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(60, 60, 60)
+                                    .addComponent(Admin_email, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(300, 300, 300)
+                                    .addComponent(Admin_register))))
+                        .addGap(3, 3, 3)))
+                .addGap(202, 202, 202))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(201, 201, 201)
+                        .addComponent(jLabel5))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(346, 346, 346)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 183, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel5)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addGap(82, 82, 82)
-                            .addComponent(Admin_password, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(14, 14, 14)
-                            .addComponent(Admin_conpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(60, 60, 60)
-                            .addComponent(Admin_email, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(300, 300, 300)
-                            .addComponent(Admin_register))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(50, 50, 50)
-                            .addComponent(jLabel4)
-                            .addGap(11, 11, 11)
-                            .addComponent(Admin_login)))
-                    .addGap(0, 200, Short.MAX_VALUE)))
+                    .addGap(50, 277, Short.MAX_VALUE)
+                    .addComponent(jLabel4)
+                    .addGap(11, 11, 11)
+                    .addComponent(Admin_login)
+                    .addGap(0, 248, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addComponent(Admin_username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(306, Short.MAX_VALUE))
+                .addGap(74, 74, 74)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Admin_username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(Admin_password, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(Admin_conpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Admin_email, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addComponent(Admin_register)
+                .addContainerGap(214, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 25, Short.MAX_VALUE)
-                    .addComponent(jLabel5)
-                    .addGap(28, 28, 28)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(10, 10, 10)
-                    .addComponent(jLabel2)
-                    .addGap(20, 20, 20)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel3)
-                        .addComponent(Admin_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(14, 14, 14)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel6)
-                        .addComponent(Admin_conpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(14, 14, 14)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Admin_email, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(20, 20, 20)
-                    .addComponent(Admin_register)
-                    .addGap(83, 83, 83)
+                    .addGap(0, 481, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel4)
                         .addComponent(Admin_login))
-                    .addGap(0, 25, Short.MAX_VALUE)))
+                    .addGap(0, 101, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void Admin_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admin_passwordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Admin_passwordActionPerformed
 
     private void Admin_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admin_usernameActionPerformed
         // TODO add your handling code here:
@@ -231,10 +257,6 @@ public class AdminRegister extends javax.swing.JFrame {
     private void Admin_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admin_registerActionPerformed
         Validate();
     }//GEN-LAST:event_Admin_registerActionPerformed
-
-    private void Admin_conpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admin_conpasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Admin_conpasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -272,10 +294,10 @@ public class AdminRegister extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Admin_conpassword;
+    private javax.swing.JPasswordField Admin_conpassword;
     private javax.swing.JTextField Admin_email;
     private javax.swing.JButton Admin_login;
-    private javax.swing.JTextField Admin_password;
+    private javax.swing.JPasswordField Admin_password;
     private javax.swing.JButton Admin_register;
     private javax.swing.JTextField Admin_username;
     private javax.swing.JLabel jLabel1;
@@ -285,5 +307,6 @@ public class AdminRegister extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
 }

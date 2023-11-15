@@ -14,8 +14,10 @@ public class CustomerInfo {
     public double bal_amount;
     //int orderid;
     
+    public static ArrayList<Order> order = new ArrayList<>();
     public static ArrayList<CustomerInfo> cus_array= new ArrayList<>();
     public static HashMap<String,String> mp = new HashMap<>();
+    public static HashMap<String,CustomerInfo> ub = new HashMap<>();
 
     public CustomerInfo()
     {
@@ -29,7 +31,7 @@ public class CustomerInfo {
         this.email = email;
         this.bal_amount = bal_amount;
         mp.put(username,password);
-        
+        CustomerInfo put = ub.put(username,this);
         //Orderdetails = "";
         //orderid = 0;
     }

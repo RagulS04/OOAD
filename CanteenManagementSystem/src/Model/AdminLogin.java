@@ -5,6 +5,8 @@
 package Model;
 
 import canteenmanagementsystem.AdminInfo;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,7 +19,9 @@ public class AdminLogin extends javax.swing.JFrame {
      * Creates new form AdminLogin
      */
     public AdminLogin() {
+        setBounds(790,100,400,5);
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -29,20 +33,32 @@ public class AdminLogin extends javax.swing.JFrame {
     
     public void Validate(){
         String username = Adminusername.getText();
-        String password = Adminpassword.getText();
+        String password = AdminPassword.getText();
         
-        if(AdminInfo.mp.containsKey(username)){
-            if(AdminInfo.mp.get(username).equals(password)){
-                JOptionPane.showMessageDialog(null,"Login successful");
+        if(AdminInfo.mp.containsKey(username) /*|| "S".equals(username)*/){
+            if(AdminInfo.mp.get(username).equals(password) /*|| "s".equals(password)*/){
+                //JOptionPane.showMessageDialog(null,"Login successful");
+                final JOptionPane pane = new JOptionPane(username+" login successfully");
+                final JDialog d = pane.createDialog((JFrame)null, "Login");
+                d.setLocation(1050,350);
+                d.setVisible(true);
                 setVisible(false);
-                new ManageItems().setVisible(true);
+                new ManageItems(username).setVisible(true);
             }
             else{
-                JOptionPane.showMessageDialog(null,"Password doesn't match");
+                //JOptionPane.showMessageDialog(null,"Password doesn't match");
+                final JOptionPane pane = new JOptionPane("Password doesn't match");
+                final JDialog d = pane.createDialog((JFrame)null, "Login Error");
+                d.setLocation(1050,350);
+                d.setVisible(true);
             }
         }
         else{
-            JOptionPane.showMessageDialog(null,"Admin doesn't exist");
+            //JOptionPane.showMessageDialog(null,"Admin doesn't exist");
+            final JOptionPane pane = new JOptionPane("Admin doesn't exist");
+            final JDialog d = pane.createDialog((JFrame)null, "Login Error");
+            d.setLocation(1050,350);
+            d.setVisible(true);
         }
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -52,22 +68,28 @@ public class AdminLogin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         Adminusername = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        Adminpassword = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         Customerchangebutton = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         AdminLogin = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        AdminPassword = new javax.swing.JPasswordField();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(204, 204, 204));
+        setPreferredSize(new java.awt.Dimension(740, 632));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 255, 102));
         jLabel1.setText("Login");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 51, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Username");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, -1, -1));
 
         Adminusername.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Adminusername.addActionListener(new java.awt.event.ActionListener() {
@@ -75,14 +97,15 @@ public class AdminLogin extends javax.swing.JFrame {
                 AdminusernameActionPerformed(evt);
             }
         });
+        getContentPane().add(Adminusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 243, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Password");
-
-        Adminpassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Continue as Customer ?");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 460, -1, -1));
 
         Customerchangebutton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Customerchangebutton.setText("Click here");
@@ -91,10 +114,12 @@ public class AdminLogin extends javax.swing.JFrame {
                 CustomerchangebuttonActionPerformed(evt);
             }
         });
+        getContentPane().add(Customerchangebutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 460, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 51, 51));
         jLabel5.setText("Canteen Management System");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 347, 43));
 
         AdminLogin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         AdminLogin.setText("Login");
@@ -103,80 +128,29 @@ public class AdminLogin extends javax.swing.JFrame {
                 AdminLoginActionPerformed(evt);
             }
         });
+        getContentPane().add(AdminLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("New Admin ?");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 430, -1, -1));
 
+        jButton1.setBackground(new java.awt.Color(0, 102, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Sign up");
+        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 255, 255), new java.awt.Color(51, 204, 255), null, null));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 430, 90, 23));
+        getContentPane().add(AdminPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 243, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(176, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(52, 52, 52)
-                                .addComponent(Adminusername, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(56, 56, 56)
-                                .addComponent(Adminpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(AdminLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Customerchangebutton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(239, 239, 239))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72)
-                .addComponent(jLabel1)
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel2))
-                    .addComponent(Adminusername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel3))
-                    .addComponent(Adminpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addComponent(AdminLogin)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(Customerchangebutton))
-                .addGap(19, 19, 19))
-        );
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 51, 204));
+        jLabel7.setText("Staff");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 60, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -239,7 +213,7 @@ public class AdminLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AdminLogin;
-    private javax.swing.JTextField Adminpassword;
+    private javax.swing.JPasswordField AdminPassword;
     private javax.swing.JTextField Adminusername;
     private javax.swing.JButton Customerchangebutton;
     private javax.swing.JButton jButton1;
@@ -249,5 +223,6 @@ public class AdminLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
 }

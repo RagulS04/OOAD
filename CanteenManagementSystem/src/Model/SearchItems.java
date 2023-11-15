@@ -4,6 +4,9 @@
  */
 package Model;
 
+import static Model.Login.op;
+import static Model.Orderpage.un;
+import canteenmanagementsystem.CustomerInfo;
 import canteenmanagementsystem.ItemInfo;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -21,6 +24,7 @@ public class SearchItems extends javax.swing.JFrame {
      */
     public SearchItems() {
         initComponents();
+        setBounds(820,200,710,450);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         /*DefaultTableModel dtm = (DefaultTableModel) Edittable.getModel();
@@ -51,8 +55,9 @@ public class SearchItems extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(710, 450));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(Searchitemtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 286, 39));
+        getContentPane().add(Searchitemtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 240, 39));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Enter Item Name :");
@@ -66,7 +71,7 @@ public class SearchItems extends javax.swing.JFrame {
                 SearchBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(SearchBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, -1, -1));
+        getContentPane().add(SearchBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 100, -1));
 
         Edittable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -91,7 +96,7 @@ public class SearchItems extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(Edittable);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, -1, 400));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 360, 340));
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 102, 102));
@@ -106,7 +111,7 @@ public class SearchItems extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/small-page-background.png"))); // NOI18N
         jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 20, 750, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 20, 270, 340));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -178,9 +183,19 @@ public class SearchItems extends javax.swing.JFrame {
                     if(ItemInfo.item_array.get(i).getName().equals(name))
                         ItemInfo.item_array.remove(i);
                 }
+                
+                for(int i=0;i<CustomerInfo.order.size();i++)
+                {
+                    if(CustomerInfo.order.get(i).getName().equals(name))
+                        CustomerInfo.order.remove(i);
+                }
+                
                 DefaultTableModel dtm = (DefaultTableModel) Edittable.getModel();
                 dtm.setRowCount(0);
         
+                op.setVisible(false);
+        Login.op = new Orderpage(un);
+        op.setVisible(true);
                 /*for(ItemInfo it: ItemInfo.item_array){
                     dtm.addRow(new Object[]{
                         it.getName(),it.getPrice(),it.getAvailable_quantity()

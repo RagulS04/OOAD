@@ -24,6 +24,7 @@ public class AdminInfo {
     }
 
     public AdminInfo() {
+        
     }
     
     

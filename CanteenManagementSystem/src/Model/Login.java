@@ -11,12 +11,27 @@ import canteenmanagementsystem.CustomerInfo;
  * @author Ragul S
  */
 public class Login extends javax.swing.JFrame {
-
+    
+    static Orderpage op;
+    public static String cur_user;
     /**
      * Creates new form Login
      */
     public Login() {
+        /*setUndecorated(true);// vanishing the default title bar
+        //Setting the RootPane as the main window frame
+        getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
+        
+        
+        MetalLookAndFeel.setCurrentTheme(new changeTheme());
+        try {
+          UIManager.setLookAndFeel(new MetalLookAndFeel());
+        } catch (UnsupportedLookAndFeelException e) {
+        }
+        SwingUtilities.updateComponentTreeUI(this);*/
+        setBounds(0,100,0,0);
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -32,16 +47,32 @@ public class Login extends javax.swing.JFrame {
         
         if(CustomerInfo.mp.containsKey(username)){
             if(CustomerInfo.mp.get(username).equals(password)){
-                JOptionPane.showMessageDialog(null,"Login successful");
+                cur_user=username;
+                //JOptionPane.showMessageDialog(null,"Login successful");
+                final JOptionPane pane = new JOptionPane(username+" login successfully");
+                final JDialog d = pane.createDialog((JFrame)null, "Login");
+                d.setLocation(250,350);
+                d.setVisible(true);
                 setVisible(false);
-                new Orderpage().setVisible(true);
+                CustomerInfo.order.clear();
+                op=new Orderpage(username);
+                op.setVisible(true);
+                
             }
             else{
-                JOptionPane.showMessageDialog(null,"Password doesn't match");
+                //JOptionPane.showMessageDialog(null,"Password doesn't match");
+                final JOptionPane pane = new JOptionPane("Password doesn't match");
+                final JDialog d = pane.createDialog((JFrame)null, "Login Error");
+                d.setLocation(250,350);
+                d.setVisible(true);
             }
         }
         else{
-            JOptionPane.showMessageDialog(null,"User doesn't exist");
+            //JOptionPane.showMessageDialog(null,"User doesn't exist");
+                final JOptionPane pane = new JOptionPane("User doesn't exist");
+                final JDialog d = pane.createDialog((JFrame)null, "Login Error");
+                d.setLocation(250,350);
+                d.setVisible(true);
         }
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -52,24 +83,26 @@ public class Login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         Customerusername = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        Customerpassword = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         Adminchangebutton = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        Customerpassword = new javax.swing.JPasswordField();
 
         jToggleButton1.setText("jToggleButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 500));
+        setMinimumSize(new java.awt.Dimension(720, 632));
+        setPreferredSize(new java.awt.Dimension(760, 632));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(102, 255, 102));
-        jLabel1.setText("Login");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 70, 30));
+        jLabel1.setForeground(new java.awt.Color(0, 51, 204));
+        jLabel1.setText("Customer");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, 100, 30));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Username");
@@ -86,9 +119,6 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Password");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, -1, -1));
-
-        Customerpassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        getContentPane().add(Customerpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 243, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Continue as Admin ?");
@@ -129,6 +159,12 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 373, 90, 30));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(102, 255, 102));
+        jLabel7.setText("Login");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 70, 30));
+        getContentPane().add(Customerpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 240, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -191,7 +227,7 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Adminchangebutton;
-    private javax.swing.JTextField Customerpassword;
+    private javax.swing.JPasswordField Customerpassword;
     private javax.swing.JTextField Customerusername;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -201,6 +237,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }

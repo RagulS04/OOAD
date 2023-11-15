@@ -5,6 +5,8 @@
 package Model;
 
 import canteenmanagementsystem.CustomerInfo;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,6 +20,8 @@ public class rechargeUser extends javax.swing.JFrame {
      */
     public rechargeUser() {
         initComponents();
+        setBounds(860,200,600,450);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -75,7 +79,7 @@ public class rechargeUser extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(225, 225, 225)
+                .addGap(112, 112, 112)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
@@ -89,14 +93,14 @@ public class rechargeUser extends javax.swing.JFrame {
                                 .addComponent(jLabel5))
                             .addGap(48, 48, 48)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(Customeramount, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
-                                .addComponent(Customerusername)))))
-                .addContainerGap(223, Short.MAX_VALUE))
+                                .addComponent(Customeramount)
+                                .addComponent(Customerusername, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(33, 33, 33)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
@@ -110,7 +114,7 @@ public class rechargeUser extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addGap(32, 32, 32)
                 .addComponent(jButton1)
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         pack();
@@ -125,13 +129,24 @@ public class rechargeUser extends javax.swing.JFrame {
         int flag=0;
         String name = Customerusername.getText();
         double amt = Double.parseDouble(Customeramount.getText());
-        JOptionPane.showMessageDialog(null,CustomerInfo.cus_array.size());
+        if(Customerusername.getText()==null || Customeramount.getText()==null)
+            
+        {
+            final JOptionPane pane = new JOptionPane("Please Enter all fields");
+            final JDialog d = pane.createDialog((JFrame)null, "Recharge Error");
+            d.setLocation(1050,350);
+            d.setVisible(true);
+        }
         for(int i=0;i<CustomerInfo.cus_array.size();i++)
         {
             if(name.equals(CustomerInfo.cus_array.get(i).getUsername()))
             {
                 CustomerInfo.cus_array.get(i).bal_amount+=amt;
-                 JOptionPane.showMessageDialog(null,"Recharged Successfully");
+                final JOptionPane pane = new JOptionPane("Recharged Successfully");
+            final JDialog d = pane.createDialog((JFrame)null, "Recharge");
+            d.setLocation(1050,350);
+            d.setVisible(true);
+                // JOptionPane.showMessageDialog(null,"Recharged Successfully");
                  setVisible(false);
                  flag=1;
                  break;
@@ -139,7 +154,11 @@ public class rechargeUser extends javax.swing.JFrame {
         }
         if(flag==0)
         {
-            JOptionPane.showMessageDialog(null,"User not found!");
+            final JOptionPane pane = new JOptionPane("User not found");
+            final JDialog d = pane.createDialog((JFrame)null, "Recharge Error");
+            d.setLocation(1050,350);
+            d.setVisible(true);
+            //JOptionPane.showMessageDialog(null,"User not found!");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

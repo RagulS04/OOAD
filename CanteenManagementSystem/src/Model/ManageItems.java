@@ -4,6 +4,8 @@
  */
 package Model;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Ragul S
@@ -12,14 +14,17 @@ public class ManageItems extends javax.swing.JFrame {
     String username;
     /**
      * Creates new form ManageItems
-     * @param name
+     * @param n
      */
     
 
-    public ManageItems()
+    public ManageItems(String n)
     {
-       // Userbox.setText("Selva");
+        username = n;
+        setBounds(790,100,400,5);
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        Userbox.setText(n);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,10 +40,14 @@ public class ManageItems extends javax.swing.JFrame {
         rechargebtn = new javax.swing.JButton();
         viewbtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        Userbox = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        Userbox = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(760, 632));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Addbtn.setBackground(new java.awt.Color(0, 204, 204));
@@ -49,7 +58,7 @@ public class ManageItems extends javax.swing.JFrame {
                 AddbtnActionPerformed(evt);
             }
         });
-        getContentPane().add(Addbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 70, 86, 40));
+        getContentPane().add(Addbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 86, 40));
 
         updatebtn.setBackground(new java.awt.Color(0, 204, 204));
         updatebtn.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
@@ -59,7 +68,7 @@ public class ManageItems extends javax.swing.JFrame {
                 updatebtnActionPerformed(evt);
             }
         });
-        getContentPane().add(updatebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(291, 70, 103, 40));
+        getContentPane().add(updatebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 103, 40));
 
         rechargebtn.setBackground(new java.awt.Color(0, 204, 204));
         rechargebtn.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
@@ -69,7 +78,7 @@ public class ManageItems extends javax.swing.JFrame {
                 rechargebtnActionPerformed(evt);
             }
         });
-        getContentPane().add(rechargebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 70, 110, 40));
+        getContentPane().add(rechargebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, 110, 40));
 
         viewbtn.setBackground(new java.awt.Color(0, 204, 204));
         viewbtn.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
@@ -79,27 +88,54 @@ public class ManageItems extends javax.swing.JFrame {
                 viewbtnActionPerformed(evt);
             }
         });
-        getContentPane().add(viewbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(712, 70, -1, 40));
+        getContentPane().add(viewbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 130, -1, 40));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 51, 51));
         jLabel1.setText("Canteen Management System");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
 
-        Userbox.addActionListener(new java.awt.event.ActionListener() {
+        Userbox.setBackground(new java.awt.Color(255, 255, 255));
+        Userbox.setFont(new java.awt.Font("Malgun Gothic", 1, 12)); // NOI18N
+        getContentPane().add(Userbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 90, 40));
+
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel2.setText("Order List");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 130, 40));
+
+        jButton2.setBackground(new java.awt.Color(0, 102, 255));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Logout");
+        jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 255, 255), new java.awt.Color(51, 204, 255), null, null));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UserboxActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(Userbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, 100, 40));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 30, 90, 30));
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Order ID", "Name", "Total"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 180, -1, -1));
+        jScrollPane1.setViewportView(jTable1);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 640, 230));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -126,16 +162,11 @@ public class ManageItems extends javax.swing.JFrame {
         new ViewItems().setVisible(true);
     }//GEN-LAST:event_viewbtnActionPerformed
 
-    private void UserboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserboxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_UserboxActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        new Login().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        new AdminLogin().setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,16 +198,19 @@ public class ManageItems extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ManageItems().setVisible(true);
+                new ManageItems("").setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Addbtn;
-    private javax.swing.JTextField Userbox;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel Userbox;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JButton rechargebtn;
     private javax.swing.JButton updatebtn;
     private javax.swing.JButton viewbtn;
