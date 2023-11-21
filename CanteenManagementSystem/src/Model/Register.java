@@ -4,9 +4,13 @@
  */
 package Model;
 
+import static Model.Orderpage.openvar;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import canteenmanagementsystem.CustomerInfo;
+import java.awt.Color;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JDialog;
 
 /**
@@ -18,9 +22,24 @@ public class Register extends javax.swing.JFrame {
     /**
      * Creates new form Register
      */
+    public static Boolean op=false;
     public Register() {
+        op=true;
         setBounds(0,100,0,0);
+        setUndecorated(true);
         initComponents();
+        this.addWindowListener(new WindowAdapter() {
+  @Override
+  public void windowClosed(WindowEvent e) {
+     op=false;
+  }
+
+  @Override
+  public void windowClosing(WindowEvent e) {
+     // Do something
+     op=false;
+  }
+});
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
     
@@ -39,40 +58,52 @@ public class Register extends javax.swing.JFrame {
             if(password.equals(cpassword)==false)
             {
                 //JOptionPane.showMessageDialog(null,"Password doesn't match");
-                final JOptionPane pane = new JOptionPane("Password doesn't match");
+                new Panecus("Registration Error","Password doesn't match","").setVisible(true);
+                /*final JOptionPane pane = new JOptionPane("Password doesn't match");
                 final JDialog d = pane.createDialog((JFrame)null, "Registration Error");
                 d.setLocation(250,350);
-                d.setVisible(true);
+                d.setVisible(true);*/
             }
             
             else if(email.matches("[a-zA-Z][a-zA-Z0-9_]*@gmail.com")==false)
             {
+                new Panecus("Registration Error","Email Incorrect","").setVisible(true);
              //   JOptionPane.showMessageDialog(null,"Email incorrect");
-                final JOptionPane pane = new JOptionPane("Email incorrect");
-                final JDialog d = pane.createDialog((JFrame)null, "Registration Error");
+                /*final JOptionPane pane = new JOptionPane("Email incorrect");
+                //pane.setOpaque(true);
+                pane.setBackground(Color.green);
+                //pane.setUndecorated(true);
+                final JDialog d = pane.createDialog((JFrame)this, "Registration Error");
                 d.setLocation(250,350);
-                d.setVisible(true);
+                
+                d.setVisible(true);*/
             }
             else
             {
                 ci = new CustomerInfo(username,password,email,100);
                 CustomerInfo.cus_array.add(ci);
                 //JOptionPane.showMessageDialog(null,"Registered Successfully");
-                final JOptionPane pane = new JOptionPane(username+" registered successfully");
+                /*final JOptionPane pane = new JOptionPane(username+" registered successfully");
                 final JDialog d = pane.createDialog((JFrame)null, "Registration");
                 d.setLocation(250,350);
-                d.setVisible(true);
-                setVisible(false);
-                new Login().setVisible(true);
+                d.setVisible(true);*/
+                new Panecus("Registration",username+" registered successfully","Register").setVisible(true);
+                //setVisible(false);
+                //while(Panecus.panecusop==true);
+                    //setVisible(false);
+                    
+           
+                    
             }
         }
         catch(NullPointerException e)
         {
             //JOptionPane.showMessageDialog(null,"Please Enter all fields");
-            final JOptionPane pane = new JOptionPane("Please enter all fields");
+            /*final JOptionPane pane = new JOptionPane("Please enter all fields");
                 final JDialog d = pane.createDialog((JFrame)null, "Registration Error");
                 d.setLocation(250,350);
-                d.setVisible(true);
+                d.setVisible(true);*/
+            new Panecus("Registration Error","Please enter all fields","").setVisible(true);
         }
     }
     
@@ -85,106 +116,243 @@ public class Register extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        Cus_username = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        Cus_login = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        Cus_register = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        Cus_email = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        Cus_username = new javax.swing.JTextField();
         Cus_password = new javax.swing.JPasswordField();
         Cus_conpassword = new javax.swing.JPasswordField();
+        Cus_register = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        Cus_login = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        Cus_email = new javax.swing.JTextField();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(760, 632));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 204));
-        jLabel1.setText("Customer");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 130, 30));
+        jPanel1.setBackground(new java.awt.Color(0, 102, 0));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("Username");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, -1, -1));
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Canteen");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 200, 70));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("Password");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, -1, -1));
+        jLabel13.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Management");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 260, 70));
 
-        Cus_username.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("System.");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 260, 70));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 700));
+
+        jPanel3.setBackground(new java.awt.Color(0, 102, 0));
+        jPanel3.setForeground(new java.awt.Color(0, 102, 0));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Customer Registration");
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 160, 20));
+
+        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel11.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("  X");
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+        });
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 30, 30));
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, -20, 480, 50));
+
+        jPanel7.setBackground(new java.awt.Color(0, 102, 0));
+        jPanel7.setForeground(new java.awt.Color(0, 102, 0));
+        getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 610, 480, 60));
+
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 102, 0));
+        jLabel5.setText("Hello New Chief!");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 290, 43));
+
+        jLabel14.setFont(new java.awt.Font("Century Gothic", 1, 21)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 102, 0));
+        jLabel14.setText("Register");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 150, 90, 30));
+
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 15)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 102, 0));
+        jLabel8.setText("Username");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, 100, 30));
+
+        jLabel16.setFont(new java.awt.Font("Century Gothic", 1, 15)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(0, 102, 0));
+        jLabel16.setText("Password");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 280, 100, 30));
+
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 15)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 102, 0));
+        jLabel3.setText("Confirm Password");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, 140, 30));
+
+        jLabel17.setFont(new java.awt.Font("Century Gothic", 1, 15)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(0, 102, 0));
+        jLabel17.setText("Email ID");
+        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, 80, 30));
+
+        Cus_username.setBackground(new java.awt.Color(0, 102, 0));
+        Cus_username.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        Cus_username.setForeground(new java.awt.Color(255, 255, 255));
+        Cus_username.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Cus_username.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 204, 0), new java.awt.Color(0, 204, 0), null, null));
+        Cus_username.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Cus_username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Cus_usernameActionPerformed(evt);
             }
         });
-        getContentPane().add(Cus_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 240, -1));
+        getContentPane().add(Cus_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 230, 220, 30));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("Already have an account?");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 430, -1, -1));
-
-        Cus_login.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Cus_login.setText("Login");
-        Cus_login.addActionListener(new java.awt.event.ActionListener() {
+        Cus_password.setBackground(new java.awt.Color(0, 102, 0));
+        Cus_password.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        Cus_password.setForeground(new java.awt.Color(255, 255, 255));
+        Cus_password.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Cus_password.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 204, 0), new java.awt.Color(0, 204, 0), null, null));
+        Cus_password.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Cus_password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Cus_loginActionPerformed(evt);
+                Cus_passwordActionPerformed(evt);
             }
         });
-        getContentPane().add(Cus_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 430, -1, -1));
+        getContentPane().add(Cus_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, 220, 30));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel5.setText("Canteen Management System");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, -1, -1));
+        Cus_conpassword.setBackground(new java.awt.Color(0, 102, 0));
+        Cus_conpassword.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        Cus_conpassword.setForeground(new java.awt.Color(255, 255, 255));
+        Cus_conpassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Cus_conpassword.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 204, 0), new java.awt.Color(0, 204, 0), null, null));
+        Cus_conpassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Cus_conpassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Cus_conpasswordActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Cus_conpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 220, 30));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel6.setText("Confirm Password");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 126, -1));
-
-        Cus_register.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Cus_register.setBackground(new java.awt.Color(0, 102, 0));
+        Cus_register.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        Cus_register.setForeground(new java.awt.Color(255, 255, 255));
         Cus_register.setText("Register");
+        Cus_register.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Cus_register.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Cus_registerActionPerformed(evt);
             }
         });
-        getContentPane().add(Cus_register, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 360, -1, -1));
+        getContentPane().add(Cus_register, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 430, 90, 30));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel7.setText("Email ID");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 80, 30));
-        getContentPane().add(Cus_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 310, 243, 27));
+        jLabel15.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 102, 0));
+        jLabel15.setText("Already have an account?");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 490, 200, 50));
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(102, 255, 102));
-        jLabel8.setText("Register");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 130, 30));
-        getContentPane().add(Cus_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 240, 30));
-        getContentPane().add(Cus_conpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, 240, 30));
+        Cus_login.setBackground(new java.awt.Color(0, 102, 0));
+        Cus_login.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        Cus_login.setForeground(new java.awt.Color(255, 255, 255));
+        Cus_login.setText("Login");
+        Cus_login.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Cus_login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Cus_loginActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Cus_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 500, 80, 30));
+
+        jPanel2.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Cus_email.setBackground(new java.awt.Color(0, 102, 0));
+        Cus_email.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        Cus_email.setForeground(new java.awt.Color(255, 255, 255));
+        Cus_email.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Cus_email.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 204, 0), new java.awt.Color(0, 204, 0), null, null));
+        Cus_email.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Cus_email.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Cus_emailActionPerformed(evt);
+            }
+        });
+        jPanel2.add(Cus_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 220, 30));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 440, 600));
+
+        jPanel5.setBackground(new java.awt.Color(0, 102, 0));
+        jPanel5.setForeground(new java.awt.Color(0, 102, 0));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel6.setBackground(new java.awt.Color(0, 102, 0));
+        jPanel6.setForeground(new java.awt.Color(0, 102, 0));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 30, 640));
+
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 0, 90, 660));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Cus_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cus_loginActionPerformed
-
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+        // TODO add your handling code here:
         setVisible(false);
-        new Login().setVisible(true);
-    }//GEN-LAST:event_Cus_loginActionPerformed
+    }//GEN-LAST:event_jLabel11MouseClicked
 
     private void Cus_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cus_usernameActionPerformed
         // TODO add your handling code here:
-        
     }//GEN-LAST:event_Cus_usernameActionPerformed
 
+    private void Cus_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cus_passwordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Cus_passwordActionPerformed
+
+    private void Cus_conpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cus_conpasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Cus_conpasswordActionPerformed
+
     private void Cus_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cus_registerActionPerformed
+        // TODO add your handling code here:
         Validate();
     }//GEN-LAST:event_Cus_registerActionPerformed
+
+    private void Cus_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cus_loginActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        CanteenInterface.cl1=new Login();
+        CanteenInterface.cl1.setVisible(true);
+    }//GEN-LAST:event_Cus_loginActionPerformed
+
+    private void Cus_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cus_emailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Cus_emailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -228,13 +396,23 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JPasswordField Cus_password;
     private javax.swing.JButton Cus_register;
     private javax.swing.JTextField Cus_username;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     // End of variables declaration//GEN-END:variables
 }

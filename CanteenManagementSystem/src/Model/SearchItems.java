@@ -5,9 +5,11 @@
 package Model;
 
 import static Model.Login.op;
+import static Model.Orderpage.Carttable;
 import static Model.Orderpage.un;
 import canteenmanagementsystem.CustomerInfo;
 import canteenmanagementsystem.ItemInfo;
+import canteenmanagementsystem.Order;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -23,8 +25,17 @@ public class SearchItems extends javax.swing.JFrame {
      * Creates new form UpdateItems
      */
     public SearchItems() {
+        setUndecorated(true);
         initComponents();
-        setBounds(820,200,710,450);
+        setBounds(1033,425,473,270);
+        DefaultTableModel dtm = (DefaultTableModel) Edittable.getModel();
+        dtm.setRowCount(0);
+        
+        for(ItemInfo it: ItemInfo.item_array){
+            dtm.addRow(new Object[]{
+                it.getName(),it.getPrice(),it.getAvailable_quantity()
+            });
+        }
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         /*DefaultTableModel dtm = (DefaultTableModel) Edittable.getModel();
@@ -46,33 +57,27 @@ public class SearchItems extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Searchitemtxt = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        SearchBtn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         Edittable = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        Searchitemtxt = new javax.swing.JTextField();
+        SearchBtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(710, 450));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(Searchitemtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 240, 39));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setText("Enter Item Name :");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 140, 39));
-
-        SearchBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        SearchBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/search.png"))); // NOI18N
-        SearchBtn.setText("Search");
-        SearchBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SearchBtnActionPerformed(evt);
-            }
-        });
-        getContentPane().add(SearchBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 100, -1));
-
+        Edittable.setBackground(new java.awt.Color(204, 255, 255));
+        Edittable.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Edittable.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        Edittable.setForeground(new java.awt.Color(0, 51, 153));
         Edittable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -89,6 +94,10 @@ public class SearchItems extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        Edittable.setRowHeight(25);
+        Edittable.setSelectionBackground(new java.awt.Color(0, 51, 153));
+        Edittable.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        Edittable.setShowGrid(true);
         Edittable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 EdittableMouseClicked(evt);
@@ -96,22 +105,78 @@ public class SearchItems extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(Edittable);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 360, 340));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 270, 210));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 102, 102));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/clear.png"))); // NOI18N
+        jPanel3.setBackground(new java.awt.Color(0, 51, 153));
+        jPanel3.setForeground(new java.awt.Color(0, 102, 0));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Update");
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 160, 20));
+
+        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel11.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("  X");
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+        });
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 30, 30));
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 480, 70));
+
+        jPanel1.setBackground(new java.awt.Color(0, 51, 153));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setBackground(new java.awt.Color(204, 255, 255));
+        jButton1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 51, 153));
         jButton1.setText("Clear");
+        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, 33));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 70, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/small-page-background.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 20, 270, 340));
+        Searchitemtxt.setBackground(new java.awt.Color(204, 255, 255));
+        Searchitemtxt.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        Searchitemtxt.setForeground(new java.awt.Color(255, 132, 39));
+        Searchitemtxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Searchitemtxt.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.add(Searchitemtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 180, 30));
+
+        SearchBtn.setBackground(new java.awt.Color(204, 255, 255));
+        SearchBtn.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        SearchBtn.setForeground(new java.awt.Color(0, 51, 153));
+        SearchBtn.setText("Search");
+        SearchBtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        SearchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(SearchBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 80, -1));
+
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Enter Item Name :");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 200, 230));
+
+        jPanel5.setBackground(new java.awt.Color(0, 51, 153));
+        jPanel5.setForeground(new java.awt.Color(0, 102, 0));
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 50, 640));
+
+        jPanel7.setBackground(new java.awt.Color(0, 51, 153));
+        jPanel7.setForeground(new java.awt.Color(0, 102, 0));
+        getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 480, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -139,14 +204,16 @@ public class SearchItems extends javax.swing.JFrame {
                     it.getName(),it.getPrice(),it.getAvailable_quantity()
                 });
             }*/
-            JOptionPane.showMessageDialog(null,name+" Not Found !");
+            new Panead("Item Error",name+" not Found","").setVisible(true);
+            //JOptionPane.showMessageDialog(null,name+" Not Found !");
             Searchitemtxt.setText("");
         }
     }//GEN-LAST:event_SearchBtnActionPerformed
 
     private void EdittableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EdittableMouseClicked
         
-        int index = Edittable.getSelectedRow();
+        new EditPane().setVisible(true);
+        /*int index = Edittable.getSelectedRow();
         TableModel model = Edittable.getModel();
         String name = model.getValueAt(index, 0).toString();
         String price = model.getValueAt(index, 1).toString();
@@ -156,7 +223,7 @@ public class SearchItems extends javax.swing.JFrame {
         String[] options = { "Edit", "Delete", "Cancel" };
         int x = JOptionPane.showOptionDialog(null, "Edit or Delete?", "Select an option",  
                 JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
-                null, options, null);
+                null, options, null);*/
         /*int a = JOptionPane.showConfirmDialog(null, "Do you want to edit " + name+" ","Select",JOptionPane.YES_NO_CANCEL_OPTION);
         if(a == 0){
             new UpdateDetails(ItemInfo.item_array,name,price,quantity).setVisible(true);
@@ -165,7 +232,7 @@ public class SearchItems extends javax.swing.JFrame {
 
         else
             JOptionPane.showMessageDialog(null,name+" Not Found !"+ItemInfo.item_array.size());*/
-        if(x==0)
+       /* if(x==0)
         {
             new UpdateDetails(ItemInfo.item_array,name,price,quantity).setVisible(true);
             flag = 1;
@@ -190,24 +257,52 @@ public class SearchItems extends javax.swing.JFrame {
                         CustomerInfo.order.remove(i);
                 }
                 
-                DefaultTableModel dtm = (DefaultTableModel) Edittable.getModel();
-                dtm.setRowCount(0);
+                DefaultTableModel etm = (DefaultTableModel) Edittable.getModel();
+                etm.setRowCount(0);
         
-                op.setVisible(false);
-        Login.op = new Orderpage(un);
-        op.setVisible(true);
+                if(CanteenInterface.opov==true)
+                {
+                    DefaultTableModel dtm = (DefaultTableModel) Orderpage.Menutable.getModel();
+                    dtm.setRowCount(0);
+        
+                    for(ItemInfo it: ItemInfo.item_array){
+                        dtm.addRow(new Object[]{
+                            it.getName(),it.getPrice()
+                        });
+                    }
+                    double ta=0;
+                    DefaultTableModel ctm = (DefaultTableModel) Carttable.getModel();
+                    ctm.setRowCount(0);
+        
+                    for(Order it: CustomerInfo.order){
+                        ctm.addRow(new Object[]{
+                            it.getName(),it.getQ(),it.getP()
+                        });
+                        ta+=it.getP();
+                    }
+                    Orderpage.Totalbox.setText(String.valueOf(ta));
+                }
+                /*op.setVisible(false);
+                Login.op = new Orderpage(un);
+                op.setVisible(true);*/
                 /*for(ItemInfo it: ItemInfo.item_array){
                     dtm.addRow(new Object[]{
                         it.getName(),it.getPrice(),it.getAvailable_quantity()
                     });
                 }
                 Searchitemtxt.setText("");*/
-            }
+                
+           /* }
         }
         
         if(flag==1)
-        setVisible(false);
+        setVisible(false);*/
     }//GEN-LAST:event_EdittableMouseClicked
+
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+        // TODO add your handling code here:
+        setVisible(false);
+    }//GEN-LAST:event_jLabel11MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -251,12 +346,17 @@ public class SearchItems extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable Edittable;
+    public static javax.swing.JTable Edittable;
     private javax.swing.JButton SearchBtn;
-    private javax.swing.JTextField Searchitemtxt;
+    public static javax.swing.JTextField Searchitemtxt;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }

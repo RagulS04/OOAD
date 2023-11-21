@@ -4,6 +4,7 @@
  */
 package canteenmanagementsystem;
 
+import java.util.ArrayList;
 import java.util.Queue;
 
 /**
@@ -11,17 +12,20 @@ import java.util.Queue;
  * @author Ragul S
  */
 public class OrderInfo {
-    public static int order_id = 0;
+    public static int order_id = 30400;
     
-    public static Queue<CustomerInfo> queue;
+    public static Queue<OrderplacedInfo> queue;
     
-    public void add_order(CustomerInfo c){
+    public static ArrayList<OrderplacedInfo> oa=new ArrayList<>();
+    
+    public static void add_order(OrderplacedInfo c){
         //c.orderid = order_id;
-        queue.add(c);
+        //queue.add(c);
+        oa.add(c);
         order_id++;
     }
     
-    public void served(CustomerInfo c){
+    public void served(OrderplacedInfo c){
         queue.remove(c);
     }
 }

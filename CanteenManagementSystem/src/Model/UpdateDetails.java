@@ -5,6 +5,7 @@
 package Model;
 
 import static Model.Login.op;
+import static Model.Orderpage.Carttable;
 import static Model.Orderpage.un;
 import canteenmanagementsystem.CustomerInfo;
 import canteenmanagementsystem.ItemInfo;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -37,8 +39,9 @@ public class UpdateDetails extends javax.swing.JFrame {
     ItemInfo it;
     Order it2;
     public UpdateDetails(ArrayList<ItemInfo> item_array,String name,String price,String quantity) {
+        setUndecorated(true);
         initComponents();
-        setBounds(860,200,600,450);
+        setBounds(1033,425,473,270);
         //setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -69,113 +72,159 @@ public class UpdateDetails extends javax.swing.JFrame {
     private void initComponents() {
 
         jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         updateitemname = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         updateitemprice = new javax.swing.JTextField();
         updateitemquantity = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
         clearbtn = new javax.swing.JButton();
         updatebtn = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
-        jLabel2.setText("Item Name");
+        jPanel3.setBackground(new java.awt.Color(0, 51, 153));
+        jPanel3.setForeground(new java.awt.Color(0, 102, 0));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        updateitemname.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Newly Cooked");
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 160, 20));
+
+        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel11.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("  X");
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+        });
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 30, 30));
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 480, 50));
+
+        jPanel5.setBackground(new java.awt.Color(0, 51, 153));
+        jPanel5.setForeground(new java.awt.Color(0, 102, 0));
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 50, 640));
+
+        jPanel7.setBackground(new java.awt.Color(0, 51, 153));
+        jPanel7.setForeground(new java.awt.Color(0, 102, 0));
+        getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 480, 60));
+
+        jPanel1.setBackground(new java.awt.Color(0, 51, 153));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("What's");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 200, -1));
+
+        jLabel13.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("New??");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 90, 40));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 700));
+
+        updateitemname.setBackground(new java.awt.Color(0, 51, 153));
+        updateitemname.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        updateitemname.setForeground(new java.awt.Color(255, 255, 255));
+        updateitemname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        updateitemname.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        updateitemname.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         updateitemname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateitemnameActionPerformed(evt);
             }
         });
+        getContentPane().add(updateitemname, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 150, 30));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
-        jLabel3.setText("Price");
+        updateitemprice.setBackground(new java.awt.Color(0, 51, 153));
+        updateitemprice.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        updateitemprice.setForeground(new java.awt.Color(255, 255, 255));
+        updateitemprice.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        updateitemprice.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        updateitemprice.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        updateitemprice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateitempriceActionPerformed(evt);
+            }
+        });
+        getContentPane().add(updateitemprice, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 150, 30));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
-        jLabel4.setText("Quantity");
+        updateitemquantity.setBackground(new java.awt.Color(0, 51, 153));
+        updateitemquantity.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        updateitemquantity.setForeground(new java.awt.Color(255, 255, 255));
+        updateitemquantity.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        updateitemquantity.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        updateitemquantity.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        updateitemquantity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateitemquantityActionPerformed(evt);
+            }
+        });
+        getContentPane().add(updateitemquantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 150, 30));
 
-        updateitemprice.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        jPanel2.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        updateitemquantity.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
-
-        clearbtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        clearbtn.setForeground(new java.awt.Color(255, 102, 102));
-        clearbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/clear.png"))); // NOI18N
+        clearbtn.setBackground(new java.awt.Color(0, 51, 153));
+        clearbtn.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        clearbtn.setForeground(new java.awt.Color(255, 255, 255));
         clearbtn.setText("Clear");
+        clearbtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         clearbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearbtnActionPerformed(evt);
             }
         });
+        jPanel2.add(clearbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 70, 33));
 
-        updatebtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        updatebtn.setForeground(new java.awt.Color(255, 102, 102));
-        updatebtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/save.png"))); // NOI18N
+        updatebtn.setBackground(new java.awt.Color(0, 51, 153));
+        updatebtn.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        updatebtn.setForeground(new java.awt.Color(255, 255, 255));
         updatebtn.setText("Update");
+        updatebtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         updatebtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updatebtnActionPerformed(evt);
             }
         });
+        jPanel2.add(updatebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 70, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(75, 75, 75)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(updateitemquantity)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(clearbtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
-                                .addComponent(updatebtn))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(57, 57, 57)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(updateitemprice)
-                            .addComponent(updateitemname))))
-                .addGap(98, 98, 98))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(updateitemname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(updateitemprice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(updateitemquantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(clearbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(updatebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(53, Short.MAX_VALUE))
-        );
+        jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 51, 153));
+        jLabel7.setText("Quantity");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 90, 30));
+
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 51, 153));
+        jLabel6.setText("Price");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 70, 50));
+
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 51, 153));
+        jLabel5.setText("Item Name");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 110, 30));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 370, 250));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void updateitemnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateitemnameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_updateitemnameActionPerformed
 
     private void updatebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatebtnActionPerformed
         // TODO add your handling code here:
@@ -187,17 +236,50 @@ public class UpdateDetails extends javax.swing.JFrame {
         it.setName(name);
         it.setPrice(price);
         
+        if(it2!=null)
+        {
         it2.setName(name);
         it2.setP(price*it2.getQ());
-        final JOptionPane pane = new JOptionPane("Item Updated Successfully");
+        }
+        /*final JOptionPane pane = new JOptionPane("Item Updated Successfully");
             final JDialog d = pane.createDialog((JFrame)null, "Update");
             d.setLocation(1050,350);
-            d.setVisible(true);
+            d.setVisible(true);*/
+        new Panead("Update","Updated Successfully","Add").setVisible(true);
         //JOptionPane.showMessageDialog(null,"Item Updated Successfully");
         setVisible(false);
-        op.setVisible(false);
-        Login.op = new Orderpage(un);
-        op.setVisible(true);
+        
+        if(CanteenInterface.opov==true)
+        {
+            DefaultTableModel dtm = (DefaultTableModel) Orderpage.Menutable.getModel();
+            dtm.setRowCount(0);
+        
+            for(ItemInfo it: ItemInfo.item_array){
+                if(it.getAvailable_quantity()>0)
+                dtm.addRow(new Object[]{
+                    it.getName(),it.getPrice()
+                });
+            }
+            double ta=0;
+            DefaultTableModel ctm = (DefaultTableModel) Carttable.getModel();
+            ctm.setRowCount(0);
+        
+            for(Order it: CustomerInfo.order){
+                for(ItemInfo it1: ItemInfo.item_array){
+                if(it1.getAvailable_quantity()>0 && it.getName().equals(it1.getName()))
+                {
+                ctm.addRow(new Object[]{
+                    it.getName(),it.getQ(),it.getP()
+                });
+                ta+=it.getP();
+                break;
+                }
+                
+                }
+            }
+            Orderpage.Totalbox.setText(String.valueOf(ta));
+        }
+        ManageItems.si.setVisible(false);
     }//GEN-LAST:event_updatebtnActionPerformed
 
     private void clearbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearbtnActionPerformed
@@ -207,6 +289,23 @@ public class UpdateDetails extends javax.swing.JFrame {
         updateitemquantity.setText("");
         
     }//GEN-LAST:event_clearbtnActionPerformed
+
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+        // TODO add your handling code here:
+        setVisible(false);
+    }//GEN-LAST:event_jLabel11MouseClicked
+
+    private void updateitemnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateitemnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateitemnameActionPerformed
+
+    private void updateitempriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateitempriceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateitempriceActionPerformed
+
+    private void updateitemquantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateitemquantityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateitemquantityActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,9 +345,18 @@ public class UpdateDetails extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton clearbtn;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JButton updatebtn;
     private javax.swing.JTextField updateitemname;
     private javax.swing.JTextField updateitemprice;

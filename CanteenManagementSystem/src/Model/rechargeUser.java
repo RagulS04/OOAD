@@ -19,8 +19,10 @@ public class rechargeUser extends javax.swing.JFrame {
      * Creates new form rechargeUser
      */
     public rechargeUser() {
+        setUndecorated(true);
         initComponents();
-        setBounds(860,200,600,450);
+        setBounds(1033,425,473,270);
+
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
@@ -33,132 +35,210 @@ public class rechargeUser extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         Customerusername = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         Customeramount = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel1.setText("Canteen Management System");
+        jPanel3.setBackground(new java.awt.Color(0, 51, 153));
+        jPanel3.setForeground(new java.awt.Color(0, 102, 0));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel2.setText("Recharge");
+        jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Recharge");
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 160, 20));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("Username");
+        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel11.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("  X");
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+        });
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 30, 30));
 
-        Customerusername.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 480, 50));
+
+        jPanel5.setBackground(new java.awt.Color(0, 51, 153));
+        jPanel5.setForeground(new java.awt.Color(0, 102, 0));
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 50, 640));
+
+        jPanel7.setBackground(new java.awt.Color(0, 51, 153));
+        jPanel7.setForeground(new java.awt.Color(0, 102, 0));
+        getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 480, 60));
+
+        jPanel1.setBackground(new java.awt.Color(0, 51, 153));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Get");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 200, -1));
+
+        jLabel13.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Energy");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 90, 40));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 700));
+
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 51, 153));
+        jLabel6.setText("Amount");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 70, 50));
+
+        jPanel2.setBackground(new java.awt.Color(204, 255, 255));
+
+        Customerusername.setBackground(new java.awt.Color(0, 51, 153));
+        Customerusername.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        Customerusername.setForeground(new java.awt.Color(255, 255, 255));
+        Customerusername.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Customerusername.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Customerusername.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Customerusername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CustomerusernameActionPerformed(evt);
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setText("Amount");
+        Customeramount.setBackground(new java.awt.Color(0, 51, 153));
+        Customeramount.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        Customeramount.setForeground(new java.awt.Color(255, 255, 255));
+        Customeramount.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Customeramount.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Customeramount.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Customeramount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CustomeramountActionPerformed(evt);
+            }
+        });
 
-        Customeramount.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 51, 153));
+        jLabel2.setText("Username");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton1.setBackground(new java.awt.Color(0, 51, 153));
+        jButton1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Recharge");
+        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(112, 112, 112)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton1)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel5))
-                            .addGap(48, 48, 48)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(Customeramount)
-                                .addComponent(Customerusername, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(134, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(66, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Customerusername, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                            .addComponent(Customeramount))))
+                .addGap(64, 64, 64))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jLabel1)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Customerusername, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Customeramount, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(80, 80, 80)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(Customerusername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Customeramount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(32, 32, 32)
-                .addComponent(jButton1)
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(61, Short.MAX_VALUE))
         );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 360, 230));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+        // TODO add your handling code here:
+        setVisible(false);
+    }//GEN-LAST:event_jLabel11MouseClicked
 
     private void CustomerusernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustomerusernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CustomerusernameActionPerformed
 
+    private void CustomeramountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustomeramountActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CustomeramountActionPerformed
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        try{
         int flag=0;
         String name = Customerusername.getText();
         double amt = Double.parseDouble(Customeramount.getText());
-        if(Customerusername.getText()==null || Customeramount.getText()==null)
-            
-        {
-            final JOptionPane pane = new JOptionPane("Please Enter all fields");
-            final JDialog d = pane.createDialog((JFrame)null, "Recharge Error");
-            d.setLocation(1050,350);
-            d.setVisible(true);
-        }
+        //if(Customerusername.getText()==null || Customeramount.getText()==null)
+
+        
         for(int i=0;i<CustomerInfo.cus_array.size();i++)
         {
             if(name.equals(CustomerInfo.cus_array.get(i).getUsername()))
             {
                 CustomerInfo.cus_array.get(i).bal_amount+=amt;
-                final JOptionPane pane = new JOptionPane("Recharged Successfully");
-            final JDialog d = pane.createDialog((JFrame)null, "Recharge");
-            d.setLocation(1050,350);
-            d.setVisible(true);
+                if(CanteenInterface.opov==true)
+                Orderpage.Userbal.setText(String.valueOf(CustomerInfo.ub.get(Login.cur_user).getBal_amount()));
+                /*final JOptionPane pane = new JOptionPane("Recharged Successfully");
+                final JDialog d = pane.createDialog((JFrame)null, "Recharge");
+                d.setLocation(1050,350);
+                d.setVisible(true);*/
+                new Panead("Recharge","Recharged successfully","").setVisible(true);
                 // JOptionPane.showMessageDialog(null,"Recharged Successfully");
-                 setVisible(false);
-                 flag=1;
-                 break;
+                setVisible(false);
+                flag=1;
+                break;
             }
         }
         if(flag==0)
         {
-            final JOptionPane pane = new JOptionPane("User not found");
+            /*final JOptionPane pane = new JOptionPane("User not found");
             final JDialog d = pane.createDialog((JFrame)null, "Recharge Error");
             d.setLocation(1050,350);
             d.setVisible(true);
+            */
+            new Panead("Recharge Error","User not found","").setVisible(true);
             //JOptionPane.showMessageDialog(null,"User not found!");
+        }
+        }
+        catch(NumberFormatException e)
+        {
+            /*final JOptionPane pane = new JOptionPane("Please Enter all fields");
+            final JDialog d = pane.createDialog((JFrame)null, "Recharge Error");
+            d.setLocation(1050,350);
+            d.setVisible(true);*/
+            new Panead("Recharge Error","Please Enter all fields","").setVisible(true);
+            return;
+
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -201,9 +281,16 @@ public class rechargeUser extends javax.swing.JFrame {
     private javax.swing.JTextField Customeramount;
     private javax.swing.JTextField Customerusername;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel7;
     // End of variables declaration//GEN-END:variables
 }

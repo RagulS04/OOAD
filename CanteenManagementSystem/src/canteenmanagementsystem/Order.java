@@ -2,6 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
 package canteenmanagementsystem;
 
 /**
@@ -11,6 +12,7 @@ package canteenmanagementsystem;
 public class Order {
     public String n;
     public int q;
+    //public String q;
     public double d;
     
     public Order(String na,int qu,double p)
